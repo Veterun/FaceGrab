@@ -19,39 +19,26 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="facebook-image-grab-grab-everyones-facebook-profile-image-without-login" class="anchor" href="#facebook-image-grab-grab-everyones-facebook-profile-image-without-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>Facebook Image Grab: Grab everyone's Facebook profile image without login</h1>
-
+      <h1 id="facebook-image-grab-grab-everyones-facebook-profile-image-without-login">Facebook Image Grab: Grab everyone's Facebook profile image without login</h1>
 <p>Facebook <em>graph search</em> provides a very useful, however, a hidden way to get the full-size profile pictures of any user-id or username.</p>
-
-<h4>
-<a id="note---no-loginsignup-required-to-execute-this-script" class="anchor" href="#note---no-loginsignup-required-to-execute-this-script" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note - No login/signup required to execute this script.</h4>
-
+<h4 id="note-no-loginsignup-required-to-execute-this-script">Note - No login/signup required to execute this script.</h4>
+<h2 id="update">Update :</h2>
+<h4 id="the-library-will-work-with-user-ids-only-it-will-not-work-with-usernames-this-is-due-to-recent-changes-in-facebook-api-facebook-has-recently-partially-acknowledged-this-limitation-in-their-api-and-have-improved-their-api-to-prohibit-profile-picture-request-using-the-username-of-any-user-however-this-library-still-works-for-any-user-id-and-thus-serves-its-original-purpose-of-getting-bulk-images-for-research-purposes">The library will work with user-ids only. It will not work with usernames. This is due to recent changes in Facebook API. Facebook has recently partially acknowledged this limitation in their API and have improved their API to prohibit profile picture request using the username of any user. However, this library still works for any user-id and thus serves its original purpose of getting bulk images for research purposes.</h4>
 <p>For example,</p>
-
 <pre><code>http://graph.facebook.com/picture?id=122&amp;width=800
 </code></pre>
 
-<p>This url will redirect to the full-size profile image of the user-id "122". 
-Similarly,</p>
-
-<pre><code>http://graph.facebook.com/picture?id=ankit&amp;width=800
+<p>This url will redirect to the full-size profile image of the user-id "122". </p>
+<p>Similarly,</p>
+<pre><code>http://graph.facebook.com/picture?id=ankit&amp;width=800 # This will not work now due to recent changes in the Facebook API
 </code></pre>
 
 <p>This url will redirect to the full-size profile image of the username "ankit".</p>
-
 <p>This module written in python will provide a simple API or direct usage to fetch any number of full-size facebook profile images of users either mentioned as range of user-ids or a text file containing newline separated usernames. </p>
-
-<h2>
-<a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h2>
-
+<h2 id="motivation">Motivation</h2>
 <p>Since according to the facebook privacy policy, all of these full-size profile images are public, the script enables to obtain a huge dataset of random real images legally free of cost, especially for the purposes of research (Machine Learning, Image Processing), or maybe marketing or more. </p>
-
-<h2>
-<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
-
+<h2 id="dependencies">Dependencies</h2>
 <p>The python modules are needed in order to use this library.</p>
-
 <pre><code>urllib
 sys
 os
@@ -59,77 +46,48 @@ datetime
 json
 </code></pre>
 
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-
+<h2 id="usage">Usage</h2>
 <p>Clone the repository and use the following code.</p>
-
 <p>Run the command directly from the console with command line arguments to the file fb_image.py. The command line arguments are explained as:</p>
-
-<pre><code>fb_image.py [filename]
+<pre><code>fb_image.py [filename] # This will only work if the given text file name has only user-ids and not any usernames. This is due to recent changes in the Facebook API.
 fb_image.py [id1] [id2]
 
 </code></pre>
 
 <p>where id1 and id2 defines the range of userids whose images are to be fetched.
 For example,</p>
+<pre><code class="sh">$ python fb_image.py example.txt # This will only work if the given text file name has only user-ids and not any usernames. This is due to recent changes in the Facebook API.
+$ python fb_image.py 12 16
+</code></pre>
 
-<div class="highlight highlight-sh"><pre>$ python fb_image.py example.txt
-$ python fb_image.py 12 16</pre></div>
-
-<h4>
-<a id="or" class="anchor" href="#or" aria-hidden="true"><span class="octicon octicon-link"></span></a>OR</h4>
-
-<div class="highlight highlight-python"><pre><span class="pl-k">import</span> fb_image <span class="pl-k">as</span> fb
-fb.get_profile_of_id(<span class="pl-c1">12</span>,<span class="pl-c1">16</span>)
-fb.get_profile_of_file(<span class="pl-s"><span class="pl-pds">"</span>example.txt<span class="pl-pds">"</span></span>)</pre></div>
+<h4 id="or">OR</h4>
+<pre><code class="python">import fb_image as fb
+fb.get_profile_of_id(12,16)
+fb.get_profile_of_file(&quot;example.txt&quot;) # This will only work if the given text file name has only user-ids and not any usernames. This is due to recent changes in the Facebook API.
+</code></pre>
 
 <p>The above code will obtain and save the profile images of the mentioned usersids (12-16) or usernames mentioned in "example.txt" file".</p>
-
-<h4>
-<a id="or-1" class="anchor" href="#or-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>OR</h4>
-
+<h4 id="or_1">OR</h4>
 <p>Use example.py available with the repository.</p>
+<pre><code class="sh">$ python example.py
+</code></pre>
 
-<div class="highlight highlight-sh"><pre>$ python example.py</pre></div>
-
-<h2>
-<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
-
-<div class="highlight highlight-python"><pre><span class="pl-k">import</span> fb_image <span class="pl-k">as</span> fb</pre></div>
+<h2 id="api">API</h2>
+<pre><code class="python">import fb_image as fb
+</code></pre>
 
 <p>Import the module in your main file.</p>
-
-<h4>
-<a id="fbget_profile_of_idid1-id2" class="anchor" href="#fbget_profile_of_idid1-id2" aria-hidden="true"><span class="octicon octicon-link"></span></a>fb.get_profile_of_id(id1, id2)</h4>
-
+<h4 id="fbget_profile_of_idid1-id2">fb.get_profile_of_id(id1, id2)</h4>
 <p>Function to get profile images of userids from id1 to id2.</p>
-
-<h4>
-<a id="fbget_profile_of_filefilename" class="anchor" href="#fbget_profile_of_filefilename" aria-hidden="true"><span class="octicon octicon-link"></span></a>fb.get_profile_of_file(filename)</h4>
-
-<p>Function for get profile images of userids or usernames specified in the given file (usernames and userids are to be separated using newline).</p>
-
-<h4>
-<a id="id1-is-the-starting-userid-type-integer" class="anchor" href="#id1-is-the-starting-userid-type-integer" aria-hidden="true"><span class="octicon octicon-link"></span></a>id1 is the starting userid, Type: Integer.</h4>
-
-<h4>
-<a id="id2-is-the-ending-userid-type-integer" class="anchor" href="#id2-is-the-ending-userid-type-integer" aria-hidden="true"><span class="octicon octicon-link"></span></a>id2 is the ending userid, Type: Integer.</h4>
-
-<h4>
-<a id="filename-is-the-text-file-containing-userids-and-usernames-separated-by-newline-type-string" class="anchor" href="#filename-is-the-text-file-containing-userids-and-usernames-separated-by-newline-type-string" aria-hidden="true"><span class="octicon octicon-link"></span></a>filename is the text file containing userids and usernames separated by newline, Type: String.</h4>
-
-<h2>
-<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
-
-<h4>
-<a id="author-ankit-aggarwal" class="anchor" href="#author-ankit-aggarwal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author: Ankit Aggarwal</h4>
-
+<h4 id="fbget_profile_of_filefilename">fb.get_profile_of_file(filename)</h4>
+<p>Function for get profile images of userids or usernames specified in the given file (usernames and userids are to be separated using newline). This will only work if the given text file name has only user-ids and not any usernames. This is due to recent changes in the Facebook API.</p>
+<h4 id="id1-is-the-starting-userid-type-integer">id1 is the starting userid, Type: Integer.</h4>
+<h4 id="id2-is-the-ending-userid-type-integer">id2 is the ending userid, Type: Integer.</h4>
+<h4 id="filename-is-the-text-file-containing-userids-and-usernames-separated-by-newline-type-string">filename is the text file containing userids and usernames separated by newline, Type: String.</h4>
+<h2 id="contributors">Contributors</h2>
+<h4 id="author-ankit-aggarwal">Author: Ankit Aggarwal</h4>
 <p>If anybody is interested in working on developing this library, fork and feel free to get in touch with me.</p>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
+<h2 id="license">License</h2>
 <p><a href="https://github.com/ankitaggarwal011/facebook-image-fetcher/blob/master/LICENSE">MIT License</a></p>
 
       <footer class="site-footer">
