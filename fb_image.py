@@ -83,7 +83,7 @@ def get_profile_of_file(filename):
 
 def main():
     in_name = list(sys.argv[1:])
-    if len(in_name) == 1: get_profile_of_file(in_name[0])
+    if len(in_name) == 1: print "This will only work if the given text file name has only user-ids and not any usernames. This is due to recent changes in the Facebook API."; get_profile_of_file(in_name[0])
     elif len(in_name) == 2: get_profile_of_id(in_name[0], in_name[1])
     else: print "Wrong input. Please try again."
     return 0
