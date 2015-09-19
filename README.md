@@ -4,7 +4,8 @@ Facebook *graph search* provides a very useful, however, a hidden way to get the
 
 #### Note - No login/signup required to execute this script.
 
-## Update : The library will work with user-ids only. It will not work with usernames. This is due to recent changes in Facebook API. Facebook has recently partially acknowledged this limitation in their API and have improved their API to prohibit profile picture request using the username of any user. However, this library still works for any user-id and thus serves its original purpose of getting bulk images for research purposes.
+## Update : 
+#### The library will work with user-ids only. It will not work with usernames. This is due to recent changes in Facebook API. Facebook has recently partially acknowledged this limitation in their API and have improved their API to prohibit profile picture request using the username of any user. However, this library still works for any user-id and thus serves its original purpose of getting bulk images for research purposes.
 
 For example,
 ```
